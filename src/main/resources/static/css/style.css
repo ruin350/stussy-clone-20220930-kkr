@@ -29,3 +29,8 @@ input{
 input:focus{
     border: 1px solid black;
 }
+ul{
+    margin: 0; 
+    padding: 0;
+    list-style: none;
+}
