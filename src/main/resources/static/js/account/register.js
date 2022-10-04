@@ -10,19 +10,22 @@ registerButton.onclick = ()=>{
         password:accountInputs[3].value
     }
     
-    let ajaxOption = {
+    //JSON.stringify()  ->  js객체를 json문자열로 변환
+    //JSON.parse()      ->  JSON문자열을 js객체로 변환 
+    $.ajax({
         async: false,                       // 필수
         type: "post",                       // 필수
         url: "/api/account/register",       // 필수
-        data: user,                         // 전송할 데이터가 있으면
+        contentType: "application/json",    // 전송할 데이터가 json인 경우
+        data: JSON.stringify(user),         // 전송할 데이터가 있으면
         dataType: "json",                   // json외 text 등을 사용할 수있지만 json사용함
-        succss: (response) => {              // 성공시에 실행될 메소드
+        succss: (response) => {             // 성공시에 실행될 메소드
             alert("회원가입 요청 성공")
         },
         error: (error) => {                 // 실패시에 실행될 메소드
             alert("회원가입 요청 실패")
         }
-    }
+    });
 
-    $.ajax(ajaxOption);
+    
 }
