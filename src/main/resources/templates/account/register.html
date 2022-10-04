@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Account</title>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <link rel="stylesheet" href="/static/css/style.css">
     <link rel="stylesheet" href="/static/css/header.css">
     <link rel="stylesheet" href="/static/css/account.css">
@@ -75,7 +76,8 @@
                         <input type="email" class="account-input" placeholder="이메일" >
                         <input type="password" class="account-input" placeholder="비밀번호" >
                         <button type="submit" class="btn account-button">확인</button>
-                        <a class="login-return-link" href="login.html">로그인으로 돌아가기</a>               
+                        <!-- href="login.html" -->
+                        <a class="login-return-link" href="/account/login">로그인으로 돌아가기</a>               
                     </section>
                 </div>
             </div>
@@ -85,5 +87,6 @@
 
         </footer>
     </div>
+    <script src="/static/js/account/register.js"></script>
 </body>
 </html>
