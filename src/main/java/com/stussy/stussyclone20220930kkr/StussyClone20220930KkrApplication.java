@@ -4,10 +4,11 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class StussyClone20220930KkrApplication {
+public class StussyClone20220930kkrApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(StussyClone20220930KkrApplication.class, args);
+		SpringApplication.run(StussyClone20220930kkrApplication.class, args);
 	}
+
 
 }

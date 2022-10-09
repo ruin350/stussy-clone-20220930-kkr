@@ -1,72 +1,88 @@
-main{
+main {
     margin-top: 60px;
 }
 
-.account-title{
+.account-title {
     text-align: center;
     margin-bottom: 30px;
 }
-.account-container{
+
+.account-container {
     display: flex;
-    margin: 0px auto;
     justify-content: center;
+    
+    margin: 0px auto;
 }
-section{
-    padding: 0 20px;
+
+section {
+    padding: 0px 20px;
+
     width: 512px;
 }
-.account-subtitle{
+
+.account-subtitle {
     margin-bottom: 20px;
+    border-bottom: 1px solid rgb(198, 198, 198);
     padding-bottom: 20px;
-    border-bottom: 1px solid rgb(198, 198,198);
 
     font-size: 16px;
 }
-.account-content{
-    margin: 20px 0;
+
+.account-content {
+    margin: 20px 0px;
 }
-.account-input{
+
+.account-input {
     margin-bottom: 15px;
 }
-.find-password-link{
+
+.find-password-link {
     display: flex;
     justify-content: flex-end;
     margin-bottom: 20px;
+
     color: rgb(127, 127, 127);
 }
-.account-button{
-    width: 100%;
+
+.account-button {
     margin-bottom: 15px;
-    
-    color: white;
+
+    width: 100%;
+
     font-weight: 700;
+    color: white;
     background-color: black;
 }
-.errors{
-    color: #e74c3c;
-    margin-bottom: 15px;
-    text-align: center;
-        
-}
-.errors-invisble{
-    display: none;
 
+.errors {
+    margin-bottom: 15px;
+    color: #e74c3c;
+    text-align: center;
 }
-.account-name{
+
+.errors-invisible {
+    display: none;
+}
+
+.account-name {
     display: flex;
     justify-content: center;
     width: 100%;
 }
-.account-name-half{
+
+.account-name-half {
     width: 50%;
 }
-.account-name-half:nth-child(1){
+
+.account-name-half:nth-child(1) {
     padding-right: 5px;
 }
-.account-name-half:nth-child(2){
+
+.account-name-half:nth-child(2) {
     padding-left: 5px;
 }
-.login-return-link{
+
+.login-return-link {
     display: flex;
     justify-content: center;
     color: rgb(127, 127, 127);

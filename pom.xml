@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.stussy</groupId>
-	<artifactId>stussy-clone-20220930-kkr</artifactId>
+	<artifactId>stussy-clone-20220930-junil</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>stussy-clone-20220930-kkr</name>
+	<name>stussy-clone-20220930-junil</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>
@@ -46,6 +46,15 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-validation</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-aop</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+
 
 	</dependencies>
 

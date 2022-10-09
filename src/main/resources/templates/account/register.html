@@ -5,14 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Account</title>
-    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
     <link rel="stylesheet" href="/static/css/style.css">
     <link rel="stylesheet" href="/static/css/header.css">
     <link rel="stylesheet" href="/static/css/account.css">
 </head>
 <body>
     <div id="container">
-        <!-- 헤더 -->
         <header>
             <div class="header-container">
                 <div class="header-left-container">
@@ -55,34 +54,33 @@
             </nav>
             <script src="/static/js/header/header.js"></script>
         </header>
-        <!-- 메인 -->
         <main>
             <div class="login">
                 <h1 class="account-title">ACCOUNT</h1>
                 <div class="account-container">
                     <section class="account-current">
                         <h2 class="account-subtitle">신규 회원가입</h2>
-                        <div class="errors errors-invisble">
-                        </div>
+                        <div class="errors errors-invisible">
+                            <ul class="error-msgs">
 
+                            </ul>
+                        </div>
                         <div class="account-name">
                             <div class="account-name-half">
-                                <input type="text" class="account-input" placeholder="이름" >
+                                <input type="text" class="account-input" placeholder="이름">
                             </div>
                             <div class="account-name-half">
                                 <input type="text" class="account-input" placeholder="성">
                             </div>
                         </div>
-                        <input type="email" class="account-input" placeholder="이메일" >
-                        <input type="password" class="account-input" placeholder="비밀번호" >
+                        <input type="email" class="account-input" placeholder="이메일">
+                        <input type="password" class="account-input" placeholder="비밀번호">
                         <button type="submit" class="btn account-button">확인</button>
-                        <!-- href="login.html" -->
-                        <a class="login-return-link" href="/account/login">로그인으로 돌아가기</a>               
+                        <a class="login-return-link" href="/account/login">로그인으로 돌아가기</a>
                     </section>
                 </div>
             </div>
         </main>
-        <!--  -->
         <footer>
 
         </footer>
