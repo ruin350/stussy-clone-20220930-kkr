@@ -6,7 +6,7 @@
 <mapper namespace="com.stussy.stussyclone20220930kkr.repository.AccountRepository">
     <resultMap id="role" type="com.stussy.stussyclone20220930kkr.domain.Role">
         <result property="id" column="id"/>
-        <result property="name" column="role_id"/>
+        <result property="name" column="role_name"/>
         <result property="create_date" column="create_date"/>
         <result property="update_date" column="update_date"/>
     </resultMap>
@@ -30,7 +30,7 @@
             um.name,
             um.provider,
             um.role_id,
-            rm.name,
+            rm.name as role_name,
             um.create_date,
             um.update_date
         from
@@ -40,4 +40,10 @@
             um.email = #{email}
 
     </select>
+    <insert id="saveUser" parameterType="com.stussy.stussyclone20220930kkr.domain.User" >
+        insert into
+            user_mst
+        values(0, #{email}, #{password}, #{name}, #{provider}, #{role_id}, now(), now() )
+
+    </insert>
 </mapper>
