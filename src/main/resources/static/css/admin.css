@@ -1,0 +1,15 @@
+.admin-title{
+    text-align: center;
+    margin-bottom: 30px;
+}
+.admin-container{
+    display: flex;
+    justify-content: center;
+
+    margin: 0px auto;
+}
+.admin-main{
+    padding: 0px 20px;
+    width: 956px; 
+}
+
