@@ -1,5 +1,4 @@
-class ProductMst{
-    // # = private 
+class ProductMst {
     #category;
     #name;
     #price;
@@ -8,8 +7,8 @@ class ProductMst{
     #optionInfo;
     #managementInfo;
     #shippingInfo;
-    
-    constructor(category,name,price,simpleInfo,detailInfo,optionInfo,managementInfo,shippingInfo){
+
+    constructor(category, name, price, simpleInfo, detailInfo, optionInfo, managementInfo, shippingInfo) {
         this.#category = category;
         this.#name = name;
         this.#price = price;
@@ -18,35 +17,34 @@ class ProductMst{
         this.#optionInfo = optionInfo;
         this.#managementInfo = managementInfo;
         this.#shippingInfo = shippingInfo;
-
     }
 
-    getCategory(){return this.#category;}
-    setCategory(category){this.#category = category;}
-    
-    getName(){return this.#name;}
-    setName(name){this.#name = name;}
+    getCategory() {return this.#category;}
+    setCategory(category) {this.#category = category;}
 
-    getPrice(){return this.#price;}
-    setPrice(price){this.#price = price;}
+    getName() {return this.#name;}
+    setName(name) {this.#name = name;}
 
-    getSimpleInfo(){return this.#simpleInfo;}
-    setSimpleInfo(simpleInfo){this.#simpleInfo = simpleInfo;}
+    getPrice() {return this.#price;}
+    setPrice(price) {this.#price = price;}
 
-    getDetailInfo(){return this.#detailInfo;}
-    setDetailInfo(detailInfo){this.#detailInfo = detailInfo;}
+    getSimpleInfo() {return this.#simpleInfo;}
+    setSimpleInfo(simpleInfo) {this.#simpleInfo = simpleInfo;}
 
-    getOptionInfo(){return this.#optionInfo;}
-    setOptionInfo(optionInfo){this.#optionInfo = optionInfo;}
+    getDetailInfo() {return this.#detailInfo;}
+    setDetailInfo(detailInfo) {this.#detailInfo = detailInfo;}
 
-    getManagementInfo(){return this.#managementInfo;}
-    setManagementInfo(managementInfo){this.#managementInfo = managementInfo;}
+    getOptionInfo() {return this.#optionInfo;}
+    setOptionInfo(optionInfo) {this.#optionInfo = optionInfo;}
 
-    getShippingInfo(){return this.#shippingInfo;}
-    setShippingInfo(shippingInfo){this.#shippingInfo = shippingInfo;}
+    getManagementInfo() {return this.#managementInfo;}
+    setManagementInfo(managementInfo) {this.#managementInfo = managementInfo;}
 
-    getObject(){
-        const obj ={
+    getShippingInfo() {return this.#shippingInfo;}
+    setShippingInfo(shippingInfo) {this.#shippingInfo = shippingInfo;}
+
+    getObject() {
+        const obj = {
             category: this.#category,
             name: this.#name,
             price: this.#price,
@@ -59,9 +57,12 @@ class ProductMst{
         return obj;
     }
 }
-class RegisterApi{
-    createProductRequest(productMst){
-        let responsResult = null;
+
+
+
+class RegisterApi {
+    createProductRequest(productMst) {
+        let responseResult = null;
 
         $.ajax({
             async: false,
@@ -71,23 +72,25 @@ class RegisterApi{
             data: JSON.stringify(productMst),
             dataType: "json",
             success: (response) => {
-                responsResult = response.data;
+                responseResult = response.data;
             },
             error: (error) => {
                 console.log(error);
             }
         });
-        return responsResult;
+        
+        return responseResult;
     }
 }
-class RegisterEventService{
+
+class RegisterEventService {
     #categorySelectObj;
     #nameInputObj;
     #priceInputObj;
     #registButtonObj;
     #infoTextareaObjs;
 
-    constructor(){
+    constructor() {
         this.#categorySelectObj = document.querySelectorAll(".product-inputs")[0];
         this.#nameInputObj = document.querySelectorAll(".product-inputs")[1];
         this.#priceInputObj = document.querySelectorAll(".product-inputs")[2];
@@ -102,14 +105,12 @@ class RegisterEventService{
         this.addRegistButtonEvent();
     }
 
-    // disabled 비활성화
-    init(){
+    init() {
         this.#nameInputObj.disabled = true;
         this.#priceInputObj.disabled = true;
         this.#registButtonObj.disabled = true;
     }
 
-    // 카테고리 onchange 셀렉트값이 변경될때 함수호출
     addCategorySelectEvent() {
         this.#categorySelectObj.onchange = () => {
             if(this.#categorySelectObj.value != "none") {
@@ -120,7 +121,6 @@ class RegisterEventService{
         }
     }
 
-    // 상품명 onkeyup 사용자가 키를 눌렀다가 땟을때
     addNameInputEvent() {
         this.#nameInputObj.onkeyup = () => {
             if(this.#nameInputObj.value.length != 0) {
@@ -130,8 +130,7 @@ class RegisterEventService{
             }
         }
     }
-    
-    // 가격
+
     addPriceInputEvent() {
         this.#priceInputObj.onkeyup = () => {
             const registInfo = document.querySelector(".regist-info");
@@ -147,7 +146,7 @@ class RegisterEventService{
             }
         }
     }
-    // 버튼클릭시 RegisterObj, info의 value를 전달 onclick 클릭했을때
+
     addRegistButtonEvent() {
         this.#registButtonObj.onclick = () => {
             const category = this.#categorySelectObj.value;
@@ -163,39 +162,35 @@ class RegisterEventService{
                 category, name, price, simpleInfo, detailInfo, 
                 optionInfo, managementInfo, shippingInfo);
 
-            console.log(productMst.getObject());
-
             const registerApi = new RegisterApi();
             registerApi.createProductRequest(productMst.getObject());
+
         }
     }
 }
 
-class RegisterService{
+class RegisterService { 
     static #instance = null;
 
-    // 생성자
-    constructor(){
+    constructor() {
     }
-    
-    static getInstance(){
-        if(this.#instance == null){
+
+    static getInstance() {
+        if(this.#instance == null) {
             this.#instance = new RegisterService();
         }
         return this.#instance;
     }
-    // 메서드
-    loadRegister(){
+
+    loadRegister() {
         
     }
-    
-    setRegisterHeaderEvent(){
+
+    setRegisterHeaderEvent() {
         new RegisterEventService();
-        
     }
 }
 
-// 호출
-window.onload = () =>{
+window.onload = () => {
     RegisterService.getInstance().setRegisterHeaderEvent();
 }

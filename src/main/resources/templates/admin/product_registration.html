@@ -8,7 +8,8 @@
     <script src="https://code.jquery.com/jquery-latest.min.js"></script>
     <link rel="stylesheet" href="/static/css/style.css">
     <link rel="stylesheet" href="/static/css/header.css">
-    <link rel="stylesheet" href="/static/css/account.css">
+    <link rel="stylesheet" href="/static/css/admin.css">
+    <link rel="stylesheet" href="/static/css/aside.css">
 </head>
 <body>
     <div id="container">
@@ -55,28 +56,35 @@
             <script src="/static/js/header/header.js"></script>
         </header>
         <main>
-            <div class="login">
-                <h1 class="account-title">ACCOUNT</h1>
-                <div class="account-container">
-                    <section class="account-current">
-                        <h2 class="account-subtitle">신규 회원가입</h2>
-                        <div class="errors errors-invisible">
-                            <ul class="error-msgs">
-
-                            </ul>
+            <div class="admin">
+                <h1 class="admin-title">ADMIN PRODUCT REGISTRATION</h1>
+                <div class="admin-container">
+                    <aside class="admin-menus">
+                        <ul>
+                            <li><a href="/admin/products">상품 조회</a></li>
+                            <li><a href="/admin/product/addition">상품 등록</a></li>
+                            <li><a href="/admin/systems">시스템 정보</a></li>
+                            <li><a href="/logout">로그아웃</a></li>
+                        </ul>
+                    </aside>
+                    <section class="admin-main">
+                        <div class="regist-header">
+                            <select class="product-inputs">
+                                <option value="none">상품 종류</option>
+                                <option value="1">TEES</option>
+                                <option value="2">DENIM</option>
+                            </select>
+                            <input type="text" class="product-inputs" placeholder="상품명">
+                            <input type="number" min="100" step="100" class="product-inputs" placeholder="가격">
                         </div>
-                        <div class="account-name">
-                            <div class="account-name-half">
-                                <input type="text" class="account-input" placeholder="이름">
-                            </div>
-                            <div class="account-name-half">
-                                <input type="text" class="account-input" placeholder="성">
-                            </div>
+                        <div class="regist-info regist-info-invisible">
+                            <textarea class="product-inputs" placeholder="간단 설명"></textarea>
+                            <textarea class="product-inputs" placeholder="상세 설명"></textarea>
+                            <textarea class="product-inputs" placeholder="추가 설명"></textarea>
+                            <textarea class="product-inputs" placeholder="관리 설명"></textarea>
+                            <textarea class="product-inputs" placeholder="배송 설명"></textarea>
                         </div>
-                        <input type="email" class="account-input" placeholder="이메일">
-                        <input type="password" class="account-input" placeholder="비밀번호">
-                        <button type="submit" class="btn account-button">확인</button>
-                        <a class="login-return-link" href="/account/login">로그인으로 돌아가기</a>
+                        <button type="button" class="btn regist-button">등록하기</button>
                     </section>
                 </div>
             </div>
@@ -85,6 +93,6 @@
 
         </footer>
     </div>
-    <script src="/static/js/account/register.js"></script>
+    <script src="/static/js/admin/product_registration.js"></script>
 </body>
 </html>

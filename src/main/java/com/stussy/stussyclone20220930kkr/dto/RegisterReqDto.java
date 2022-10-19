@@ -32,13 +32,13 @@ public class RegisterReqDto {
     @Pattern(regexp = "^(?=.*[a-zA-Z])(?=.*\\d)(?=.*[~!@#$%^&*_])[a-zA-Z\\d-~!@#$%^&*_]*$", message = "비밀번호는 특수기호, 영문, 숫자를 모두 포함해야합니다.", groups = ValidationGroups.PatternCheckGroup.class)
     private String password;
 
-    public User toEntity(){
+    public User toEntity() {
         return User.builder()
                 .email(email)
-                .name(firstName + lastName)
                 .password(new BCryptPasswordEncoder().encode(password))
+                .name(firstName + lastName)
                 .role_id(1)
                 .build();
     }
-}
 
+}

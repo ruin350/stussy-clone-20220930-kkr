@@ -19,9 +19,9 @@ public class RestControllerExceptionHandler {
     }
 
     @ExceptionHandler(CustomInternalServerErrorException.class)
-    public ResponseEntity<?> InternalServerErrorException(CustomInternalServerErrorException e) {
+    public ResponseEntity<?> internalServerErrorException(CustomInternalServerErrorException e) {
 
-        return ResponseEntity.internalServerError().body(new CMRespDto<>(e.getMessage(),null));
+        return ResponseEntity.internalServerError().body(new CMRespDto<>(e.getMessage(), null));
     }
 
 }

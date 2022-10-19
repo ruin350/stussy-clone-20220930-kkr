@@ -19,10 +19,10 @@ public class ValidationAop {
 
 //    @Pointcut("execution(* com.stussy.stussyclone20220930kkr..*Api.*(..))")
 //    private void executionPointCut() {}
-    @Pointcut("@annotation(com.stussy.stussyclone20220930kkr.aop.annotation.LogAspect)")
-    private void annotionPointCut() {}
+    @Pointcut("@annotation(com.stussy.stussyclone20220930kkr.aop.annotation.ValidAspect)")
+    private void annotationPointcut() {}
 
-    @Around("annotationPointCut()")
+    @Around("annotationPointcut()")
     public Object around(ProceedingJoinPoint joinPoint) throws Throwable {
 
         Object[] args = joinPoint.getArgs();

@@ -1,62 +1,69 @@
-.admin-title{
+.admin-title {
     text-align: center;
     margin-bottom: 30px;
 }
-.admin-container{
+
+.admin-container {
     display: flex;
     justify-content: center;
 
     margin: 0px auto;
 }
-.admin-main{
+
+.admin-main {
     padding: 0px 20px;
-    width: 956px; 
+    width: 956px;
 }
-.regist-header{
+
+.regist-header {
     display: flex;
     align-items: center;
-
     margin-bottom: 15px;
 }
-@keyframes visible{
-    from{
+
+@keyframes visible {
+    from {
         height: 0px;
     }
-    to{
+    to {
         height: 200px;
     }
 }
 
-
-
-.regist-info{
+.regist-info {
     display: flex;
     align-items: center;
     margin-bottom: 15px;
-    
+
     height: 200px;
     animation: visible 0.2s linear alternate;
 }
-input[type="text"],input[type="number"]{
+
+input[type="text"], input[type="number"] { 
     height: 36px;
 }
-input[type="number"]{
+
+input[type="number"] {
     text-align: right;
 }
-textarea{
+
+textarea {
     height: 100%;
     resize: none;
     overflow-y: auto;
 }
 
-
-.regist-info-invisible{
+.regist-info-invisible {
     display: none;
-    
 }
 
-.regist-button{
-    width: 100%; height: 40px;
-    background-color: black;
+.regist-button {
+    width: 100%;
+    height: 40px;
     color: white;
+    background-color: black;
 }
+
+
+
+

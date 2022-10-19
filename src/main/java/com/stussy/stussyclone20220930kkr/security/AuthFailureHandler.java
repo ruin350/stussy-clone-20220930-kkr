@@ -25,4 +25,5 @@ public class AuthFailureHandler implements AuthenticationFailureHandler {
             response.sendRedirect("/account/login?error");
         }
     }
+
 }

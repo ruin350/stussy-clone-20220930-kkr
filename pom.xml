@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.stussy</groupId>
-	<artifactId>stussy-clone-20220930-kkr</artifactId>
+	<artifactId>stussy-clone-20220930-junil</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>stussy-clone-20220930-kkr</name>
+	<name>stussy-clone-20220930-junil</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>
@@ -59,14 +59,11 @@
 			<artifactId>mariadb-java-client</artifactId>
 			<version>3.0.8</version>
 		</dependency>
-
 		<dependency>
 			<groupId>org.mybatis.spring.boot</groupId>
 			<artifactId>mybatis-spring-boot-starter</artifactId>
 			<version>2.2.2</version>
 		</dependency>
-
-
 	</dependencies>
 
 	<build>
