@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.stussy</groupId>
-	<artifactId>stussy-clone-20220930-junil</artifactId>
+	<artifactId>stussy-clone-20220930-kkr</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>stussy-clone-20220930-junil</name>
+	<name>stussy-clone-20220930-kkr</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>
