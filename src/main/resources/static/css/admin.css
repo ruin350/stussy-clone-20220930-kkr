@@ -64,6 +64,69 @@ textarea {
     background-color: black;
 }
 
+.product-mst{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
 
+
+.list-container{
+    margin-top: 30px;
+    width: 70%;
+    height: 715px;
+
+    overflow-y: auto;
+}
+
+.product-mst-list{
+    width: 100%;
+}
+
+.product-mst-list td{
+    width: 8%;
+    padding: 0 5px;
+}
+
+.product-mst-list td:nth-child(1){
+    width: 10%;
+}
+.product-mst-list td:nth-child(2){
+    width: 10%;
+}
+.product-mst-list td:nth-child(3){
+    width: 36%;
+    text-align: left;
+}
+.product-mst-list td:nth-child(4){
+    width: 12%;
+    text-align: right;
+}
+
+.product-mst-list button{
+    padding: 3px 7px;
+}
+
+.show-option{
+    width: 28%;
+}
+
+.function-container{
+    height: 220px;
+    border: 1px solid rgb(198, 198, 198);
+    margin-top: 30px;
+}
+
+.show-option label{
+    display: inline-block;
+    padding: 10px 0 5px;
+
+    font-weight: bold;
+}
+
+.show-option textarea{
+    margin-bottom: 10px;
+    height: 50px;
+}
 
 

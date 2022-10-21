@@ -182,7 +182,10 @@ class RegisterEventService {
                 optionInfo, managementInfo, shippingInfo);
 
             const registerApi = new RegisterApi();
-            registerApi.createProductRequest(productMst.getObject());
+            if(registerApi.createProductRequest(productMst.getObject())) {
+                alert("상품 등록 완료")
+                location.reload()
+            }
 
         }
     }
