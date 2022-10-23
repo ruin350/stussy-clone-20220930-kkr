@@ -79,6 +79,41 @@ textarea {
     overflow-y: auto;
 }
 
+.option-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    margin-bottom: 5px;
+}
+
+.pagenumber-list{
+    display: flex;
+}
+
+.pagenumber-list li{
+    margin-right: 3px;
+    width: 20px; height: 20px;
+    border-radius: 3px;
+    border: 1px solid rgb(198, 198, 198);
+    text-align: center;
+}
+
+.search-container{
+    display: flex;
+    justify-content: space-between;
+    width: 250px;
+}
+
+.search-input{
+    width: 200px;
+}
+
+.search-button{
+    color: white;
+    background-color: black;
+}
+
 .product-mst-list{
     width: 100%;
 }
