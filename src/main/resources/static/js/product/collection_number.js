@@ -1,19 +1,19 @@
-class CollectionsApi{
+class CollectionsApi {
     static #instance = null;
 
-    static getInstance(){
-        if(this.#instance == null){
+    static getInstance() {
+        if(this.#instance == null) {
             this.#instance = new CollectionsApi();
         }
         return this.#instance;
     }
 
-    getCollections(page){
+    getCollections(page) {
         let responseData = null;
 
         const url = location.href;
         const category = url.substring(url.lastIndexOf("/") + 1);
-        
+
         $.ajax({
             async: false,
             type: "get",
@@ -22,90 +22,89 @@ class CollectionsApi{
                 "page": page
             },
             dataType: "json",
-            success: (response) =>{
+            success: (response) => {
                 responseData = response.data;
             },
-            error: (error) =>{
+            error: (error) => {
                 console.log(error);
             }
         });
 
         return responseData;
+
     }
 }
 
-class PageNumber{
+class PageNumber {
     #page = 0;
-    #totalCount = 0;
     #maxPageNumber = 0;
     #pageNumberList = null;
 
-    constructor(page,totalCount){
+    constructor(page, totalCount) {
         this.#page = page;
         this.#maxPageNumber = totalCount % 16 == 0 ? Math.floor(totalCount / 16) : Math.floor(totalCount / 16) + 1;
-        this.#totalCount = totalCount;
         this.#pageNumberList = document.querySelector(".page-number-list");
         this.#pageNumberList.innerHTML = "";
         this.loadPageNumbers();
     }
 
-    loadPageNumbers(){
-        this.createNextButton();
-        this.createNumberButtons();
+    loadPageNumbers() {
         this.createPreButton();
+        this.createNumberButtons();
+        this.createNextButton();
     }
 
-    createPreButton(){
-        if(this.#page != 1){
+    createPreButton() {
+        if(this.#page != 1) {
             this.#pageNumberList.innerHTML += `
-                <a href="javascript:void(0)"><li>&#60;</li>
+                <a href="javascript:void(0)"><li>&#60;</li></a>
             `;
         }
     }
 
-    createNumberButtons(){
+    createNumberButtons() {
+        const startIndex = this.#page % 5 == 0 ? this.#page - 4 : this.#page - (this.#page % 5) + 1;
+        const endIndex = startIndex + 4 <= this.#maxPageNumber ? startIndex + 4 : this.#maxPageNumber;
 
-        const startIndex = this.#page % 5 == 0 ? this.#page - 4 : (this.#page % 5) + 1;
-        const endIndex = startIndex + 4  <= this.#maxPageNumber ? startIndex + 4 : this.#maxPageNumber;
-
-        for(let i = startIndex; i <= endIndex ; i++){
-            this.#pageNumberList.innerHTML +=  `
-                <a href="javascript:void(0)"><li>%{i}</li></a>
+        for(let i = startIndex; i <= endIndex; i++) {
+            this.#pageNumberList.innerHTML += `
+                <a href="javascript:void(0)"><li>${i}</li></a>
             `;
         }
     }
 
-    createNextButton(){
+    createNextButton() {
         if(this.#page != this.#maxPageNumber) {
-            this.#pageNumberList.innerHTML +=  `
-                <a href="javascript:void(0)"><li>&#62;</li>
+            this.#pageNumberList.innerHTML += `
+                <a href="javascript:void(0)"><li>&#62;</li></a>
             `;
         }
     }
+
 }
 
-class CollectionsService{
+class CollectionsService {
     static #instance = null;
 
-    static getInstance(){
-        if(this.#instance == null){
+    static getInstance() {
+        if(this.#instance == null) {
             this.#instance = new CollectionsService();
         }
         return this.#instance;
     }
 
-    collectionsEntity ={
-        page: 1,
-        totalCount:0
+    collectionsEntity = {
+        page: 2,
+        totalCount: 0
     }
 
-    loadCollections(){
-        const responseData = CollectionsApi.getInstance().getCollections(this.collectionsEntity.page)
+    loadCollections() {
+        const responseData = CollectionsApi.getInstance().getCollections(this.collectionsEntity.page);
         this.collectionsEntity.totalCount = responseData[0].productTotalCount;
 
         new PageNumber(this.collectionsEntity.page, this.collectionsEntity.totalCount);
-
     }
+
 }
 
 window.onload = () => {

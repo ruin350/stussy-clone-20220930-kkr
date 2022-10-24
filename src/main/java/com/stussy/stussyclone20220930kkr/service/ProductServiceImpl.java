@@ -19,15 +19,15 @@ public class ProductServiceImpl implements ProductService{
     @Override
     public List<CollectionListRespDto> getProductList(String category, int page) throws Exception {
         List<CollectionListRespDto> productList = new ArrayList<CollectionListRespDto>();
-        Map<String, Object> map = new HashMap<String, Object>();
 
+        Map<String, Object> map = new HashMap<String, Object>();
         map.put("category", category);
         map.put("index", (page - 1) * 16);
 
-
-        productRepository.getProductList(map).forEach(CollectionsProduct -> {
-            productList.add(CollectionsProduct.toDto());
+        productRepository.getProductList(map).forEach(collectionsProduct -> {
+            productList.add(collectionsProduct.toDto());
         });
-        return null;
+
+        return productList;
     }
 }
