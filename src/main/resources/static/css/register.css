@@ -1,0 +1,31 @@
+.file-list{
+    margin: 15px 0;
+}
+
+.file-info{
+    display: flex;
+    align-items: center;
+
+    padding: 5px 15px;
+    border: 1px solid rgb(198, 198, 198);
+}
+
+.file-img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+    
+    width: 15%; height: 150px;
+    overflow: hidden;
+}
+
+.file-img img{
+    width: 100%;
+}
+
+.file-name{
+    width: 78%;
+    padding: 20px
+}
+

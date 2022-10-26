@@ -46,6 +46,47 @@
             pdt_mst pm
             left outer join pdt_category_mst pcm on(pcm.id = pm.category_id)
     </select>
+
+    <select id="getSizeList" parameterType="Integer" resultType="com.stussy.stussyclone20220930kkr.domain.OptionProductSize">
+        select
+            psd.id as size_id,
+            psm.size_name
+        from
+            pdt_mst pm
+            left outer join pdt_category_mst pcm on(pcm.id = pm.category_id)
+            left outer join pdt_size_dtl psd on(psd.group_id = pcm.group_id)
+            left outer join pdt_size_mst psm on(psm.id = psd.size_id)
+        where
+            pm.id = #{productId}
+
+    </select>
+
+    <select id="findProductColor"
+            parameterType="com.stussy.stussyclone20220930kkr.domain.ProductDetail"
+            resultType="Integer">
+        select
+            count(*)
+        from
+            pdt_dtl
+        where
+            pdt_id = #{pdt_id}
+        and size_id = #{size_id}
+        and pdt_color = #{pdt_color}
+    </select>
+
+    <insert id="saveProductDtl" parameterType="com.stussy.stussyclone20220930kkr.domain.ProductDetail">
+        insert into
+            pdt_dtl
+        values(
+            0,
+            #{pdt_id},
+            #{size_id},
+            #{pdt_color},
+            #{pdt_stock},
+            now(),
+            now()
+        )
+    </insert>
 </mapper>
 
 
