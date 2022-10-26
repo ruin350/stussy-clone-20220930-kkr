@@ -12,4 +12,8 @@ public class ProductManagementController {
     public String loadProductRegister() {
         return "admin/product_registration";
     }
+    @GetMapping("/product/register/dtl")
+    public String loadProductDtlRegister() {
+        return "admin/product_dtl_registration";
+    }
 }

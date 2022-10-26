@@ -1,6 +1,7 @@
 package com.stussy.stussyclone20220930kkr.api;
 
 
+import com.stussy.stussyclone20220930kkr.aop.annotation.LogAspect;
 import com.stussy.stussyclone20220930kkr.dto.CMRespDto;
 import com.stussy.stussyclone20220930kkr.service.ProductService;
 import lombok.RequiredArgsConstructor;
@@ -16,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class ProductApi {
 
     private final ProductService productService;
-
+    @LogAspect
     @GetMapping("/collections/{category}")
     public ResponseEntity<?> getCollections(@PathVariable String category, int page) throws Exception {
 
