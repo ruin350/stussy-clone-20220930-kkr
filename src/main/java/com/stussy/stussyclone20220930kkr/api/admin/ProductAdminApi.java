@@ -3,6 +3,7 @@ package com.stussy.stussyclone20220930kkr.api.admin;
 import com.stussy.stussyclone20220930kkr.aop.annotation.LogAspect;
 import com.stussy.stussyclone20220930kkr.aop.annotation.ValidAspect;
 import com.stussy.stussyclone20220930kkr.dto.CMRespDto;
+import com.stussy.stussyclone20220930kkr.dto.admin.ProductImgReqDto;
 import com.stussy.stussyclone20220930kkr.dto.admin.ProductRegisterDtlReqDto;
 import com.stussy.stussyclone20220930kkr.dto.admin.ProductRegisterReqDto;
 import com.stussy.stussyclone20220930kkr.service.admin.ProductManagementService;
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.Random;
+
+import static org.springframework.http.ResponseEntity.created;
 
 @RestController
 @RequestMapping("/api/admin")
@@ -37,7 +40,7 @@ public class ProductAdminApi {
 
         }
 
-        return ResponseEntity.created(null)
+        return created(null)
                 .body(new CMRespDto<>("Register Successfully", true));
     }
 
@@ -64,6 +67,15 @@ public class ProductAdminApi {
 
         productManagementService.checkDuplicatedColor(productRegisterDtlReqDto);
         productManagementService.registerDtl(productRegisterDtlReqDto);
+
+        return created(null)
+                .body(new CMRespDto<>("Register Successfully", true));
+    }
+    @LogAspect
+    @PostMapping("/product/img")
+    public ResponseEntity<?> registerImg(ProductImgReqDto productImgReqDto) throws Exception {
+
+        productManagementService.registerImg(productImgReqDto);
 
         return ResponseEntity.created(null)
                 .body(new CMRespDto<>("Register Successfully", true));

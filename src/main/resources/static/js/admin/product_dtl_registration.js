@@ -72,6 +72,26 @@ ${error.responseJSON.data.error}
         })
     }
 
+    registImgFiles(formData) {
+        $.ajax({
+            async: false,
+            type: "post",
+            url: "/api/admin/product/img",
+            enctype: "multipart/form-data",
+            contentType: false,
+            processData: false,
+            data: formData,
+            dataType: "json",
+            success: (response) => {
+                alert("이미지 등록 완료");
+                location.reload();
+            },
+            error: (error) => {
+                console.log(error);
+            }
+        });
+    }
+
 }
 
 class Option {
@@ -83,16 +103,26 @@ class Option {
         return this.#instance;
     }
 
+    constructor() {
+        this.setProductMstSelectOptions();
+        this.addSubmitEvent();
+    }
+
     setProductMstSelectOptions() {
         const pdtMstSelect = document.querySelector(".product-select");
-        CommonApi.getInstance().getProductMstList().forEach(product => {
-            console.log(product)
-            pdtMstSelect.innerHTML += `
-                <option value="${product.pdtId}">(${product.category})${product.pdtName}</option>
-            `;
-        });
+        const responseData = CommonApi.getInstance().getProductMstList();
+        if(responseData != null) {
+            if(responseData.length > 0) {
+                responseData.forEach(product => {
+                    console.log(product)
+                    pdtMstSelect.innerHTML += `
+                        <option value="${product.pdtId}">(${product.category})${product.pdtName}</option>
+                    `;
+                });
+                this.addMstSelectEvent();
+            }
+        }
 
-        this.addMstSelectEvent();
     }
 
     addMstSelectEvent() {
@@ -113,7 +143,7 @@ class Option {
     }
 
     addSubmitEvent() {
-        const registButton = document.querySelector(".regist-button");
+        const registButton = document.querySelectorAll(".regist-button")[0];
         registButton.onclick = () => {
             const productDtlParams = {
                 "pdtId": document.querySelector(".product-select").value,
@@ -126,7 +156,115 @@ class Option {
     }
 }
 
+class ProductImgFile {
+    static #instance = null;
+    static getInstance() {
+        if(this.#instance == null) {
+            this.#instance = new ProductImgFile();
+        }
+        return this.#instance;
+    }
+
+    newImgList = new Array();
+
+    constructor() {
+        this.addFileInputEvent();
+        this.addUploadEvent();
+    }
+
+    addUploadEvent() {
+        const uploadButton = document.querySelector(".upload-button");
+        uploadButton.onclick = () => {
+            const formData = new FormData();
+
+            const productId = document.querySelector(".product-select").value;
+            formData.append("pdtId", productId);
+
+            this.newImgList.forEach(imgFile => {
+                formData.append("files", imgFile);
+            });
+
+            ProductApi.getInstance().registImgFiles(formData);
+            
+        }
+    }
+
+    addFileInputEvent() {
+        const filesInput = document.querySelector(".files-input");
+        const imgAddButton = document.querySelector(".img-add-button");
+        imgAddButton.onclick = () => {
+            filesInput.click();
+        }
+
+        filesInput.onchange = () => {
+            const formData = new FormData(document.querySelector("form"));
+
+            let changeFlag = false;
+
+            formData.forEach(value => {
+                if(value.size != 0) {
+                    this.newImgList.push(value);
+                    changeFlag = true;
+                }
+            })
+
+            if(changeFlag) {
+                this.loadImgs();
+                filesInput.value = null;
+            }
+
+        }
+    }
+
+    loadImgs() {
+        const fileList = document.querySelector(".file-list");
+        fileList.innerHTML = "";
+
+        this.newImgList.forEach((imgFile, i) => {
+            const reader = new FileReader();
+
+            reader.onload = (e) => {
+                fileList.innerHTML += `
+                    <li class="file-info">
+                        <div class="file-img">
+                            <img src="${e.target.result}">
+                        </div>
+                        <div class="file-name">${imgFile.name}</div>
+                        <button type="button" class="btn delete-button">삭제</button>
+                    </li>
+                `;
+            }
+
+            setTimeout(() => {
+                reader.readAsDataURL(imgFile);
+            }, i * 300);
+
+        });
+
+        setTimeout(() => {
+            this.addDeleteEvent();
+        }, this.newImgList.length * 300);
+
+        
+    }
+
+    addDeleteEvent() {
+        const deleteButtons = document.querySelectorAll(".delete-button");
+
+        deleteButtons.forEach((deleteButton, i) => {
+            deleteButton.onclick = () => {
+                if(confirm("상품을 지우시겠습니까?")) {
+                    this.newImgList.splice(i, 1);
+                    this.loadImgs();
+                }
+            }
+        });
+    }
+}
+
+
+
 window.onload = () => {
-    Option.getInstance().setProductMstSelectOptions();
-    Option.getInstance().addSubmitEvent();
+    ProductImgFile.getInstance();
+    Option.getInstance();
 }
