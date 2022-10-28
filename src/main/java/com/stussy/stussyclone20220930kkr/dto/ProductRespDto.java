@@ -8,7 +8,7 @@ import java.util.Map;
 
 @Builder
 @Data
-public class ProductRstDto {
+public class ProductRespDto {
 
     private int pdtId;
     private String pdtName;
@@ -18,7 +18,7 @@ public class ProductRstDto {
     private String pdtOptionInfo;
     private String pdtManagementInfo;
     private String pdtShippingInfo;
-    private Map<String, List<Map<String,Object>>> pdtColors;
-    private List<String> pdtImags;
+    private Map<String, List<Map<String, Object>>> pdtColors;
+    private List<String> pdtImgs;
 
 }

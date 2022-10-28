@@ -13,7 +13,7 @@ import java.util.List;
 @Data
 public class Product {
     private int id;
-    private String  pdt_name;
+    private String pdt_name;
     private int category_id;
     private int pdt_price;
     private String pdt_simple_info;
