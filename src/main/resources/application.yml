@@ -19,7 +19,3 @@ spring:
 mybatis:
   mapper-locations:
     - /mappers/*.xml
-
-
-file:
-  path: C:\junil\kkr\stussy-clone-20220930-kkr\src\main\resources\static\upload\product/

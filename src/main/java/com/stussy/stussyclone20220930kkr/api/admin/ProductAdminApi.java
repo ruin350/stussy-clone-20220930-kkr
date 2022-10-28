@@ -80,4 +80,9 @@ public class ProductAdminApi {
         return ResponseEntity.created(null)
                 .body(new CMRespDto<>("Register Successfully", true));
     }
+    @GetMapping("/product/{pdtId}")
+    public ResponseEntity<?> getProduct(@PathVariable int pdtId) throws Exception {
+
+        return ResponseEntity.ok(new CMRespDto<>("Register Successfully", true));
+    }
 }

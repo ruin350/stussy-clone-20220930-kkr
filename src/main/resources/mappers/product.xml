@@ -6,6 +6,32 @@
 
 <mapper namespace="com.stussy.stussyclone20220930kkr.repository.ProductRepository">
 
+    <resultMap id="getProductDtl" type="com.stussy.stussyclone20220930kkr.domain.ProductDetail">
+
+        <result property="id" column="pdt_dtl_id"/>
+        <result property="pdt_color" column="pdt_color"/>
+        <result property="pdt_size_id" column="size_id"/>
+        <result property="size_name" column="size_name"/>
+        <result property="pdt_stock" column="pdt_stock"/>
+    </resultMap>
+
+    <resultMap id="getProdcutImg" type="com.stussy.stussyclone20220930kkr.domain.ProductImg">
+        <result property="save_name" column="save_name"/>
+
+    </resultMap>
+    <resultMap id="getProductMst" type="com.stussy.stussyclone20220930kkr.domain.Product">
+        <result property="id" column="pdt_id"/>
+        <result property="name" column="pdt_name"/>
+        <result property="pdt_price" column="pdt_price"/>
+        <result property="pd_simple_info" column="pd_simple_info"/>
+        <result property="pd_detail_info" column="pd_detail_info"/>
+        <result property="pd_option_info" column="pd_option_info"/>
+        <result property="pd_management_info" column="pd_management_info"/>
+        <result property="pd_shipping_info" column="pd_shipping_info"/>
+        <collection property="pdt_dtls" javaType="list" resultMap="getProductDtl"/>
+        <collection property="pdt_imgs" javaType="list" resultMap="getProductImg"/>
+    </resultMap>
+
     <select id="getProductList" parameterType="hashmap" resultType="com.stussy.stussyclone20220930kkr.domain.CollectionProduct">
         select
             pm.id,
@@ -30,6 +56,33 @@
         group by
             pm.id
         limit #{index}, 16
+
+    </select>
+    <select id="getProduct" resultMap="getProduct">
+        SELECT
+            pm.id AS pdt_id,
+            pm.pdt_name,
+            pm.pdt_price,
+            pm.pdt_simple_info,
+            pm.pdt_detail_info,
+            pm.pdt_option_info,
+            pm.pdt_management_info,
+            pm.pdt_shipping_info,
+            pd.id AS pdt_dtl_id,
+            pd.size_id,
+            psm.size_name,
+            pd.pdt_color,
+            pd.pdt_stock,
+            pim.save_name
+
+        FROM
+            pdt_mst pm
+            LEFT OUTER JOIN pdt_dtl pd ON(pd.pdt_id = pm.id)
+            LEFT OUTER JOIN pdt_size_dtl psd ON(psd.id = pd.size_id)
+            LEFT OUTER JOIN pdt_size_mst psm ON(psm.id = psd.size_id)
+            LEFT OUTER JOIN pdt_image_mst pim ON(pim.pdt_id = pm.id)
+        WHERE
+            pm.id = #{pdtID}
 
     </select>
 
