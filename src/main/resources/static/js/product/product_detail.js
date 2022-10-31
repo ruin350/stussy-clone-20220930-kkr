@@ -28,6 +28,55 @@ class ProductApi {
     }
 }
 
+class ProductDetail{
+
+    constructor(){
+        const responseData = ProductApi.getInstance().getProductData();
+        this.loadProductDetail(responseData);
+        this.loadProductImgs(responseData);
+        this.loadProductColors(responseData);
+    }
+
+    // img
+    loadProductImgs(responseData){
+        const productImages = document.querySelector(".product-images")
+        productImages.innerHTML = ``;
+
+        responseData.pdtImgs.forEach(img => {
+            productImages.innerHTML += `
+            <div class="product-image">
+                <img src="/static/upload/product/${img}">
+            </div>
+            `;
+        })
+    }
+
+    // detail
+    loadProductDetail(responseData){
+        document.querySelector(".product-title").textContent = responseData.pdtName;
+        document.querySelector(".product-price").textContent = "\\" + responseData.pdtPrice;
+        document.querySelector(".simple-info").innerHTML = responseData.pdtSimpleInfo;
+        document.querySelector(".detail-info").innerHTML = `<strong>PRODUCT DETAILS</strong>
+${responseData.pdtDetailInfo}`;
+        document.querySelector(".option-info").innerHTML = responseData.pdtOptionInfo;
+        document.querySelector(".management-info").innerHTML = responseData.pdtManagementInfo;
+        document.querySelector(".shipping-info").innerHTML = responseData.pdtShippingInfo;
+        
+    }
+
+    // color
+    loadProductColors(responseData){
+        const productColors = document.querySelector(".product-colors");
+        productColors.innerHTML = ``;
+
+        Object.keys(responseData.pdtColors).forEach(color =>{
+            productColors.innerHTML += `<option value="${color}">${color}</option>`;
+        })
+    }
+}
+
+
+
 window.onload = () => {
-    console.log(ProductApi.getInstance().getProductData());
+    new ProductDetail();
 }
