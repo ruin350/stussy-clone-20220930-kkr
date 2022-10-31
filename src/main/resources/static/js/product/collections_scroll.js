@@ -75,9 +75,6 @@ class CollectionsService {
         }
         return this.#instance;
     }
-    pdtIdList = new Array();
-    
-
     
     pdtIdList = null;
 

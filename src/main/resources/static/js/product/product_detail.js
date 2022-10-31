@@ -76,23 +76,22 @@ ${responseData.pdtDetailInfo}`;
     }
 
     // size선택시
-    loadProductSizes(responseData){
-        const productColors = document.querySelector(".product-colors");    
+    loadProductSizes(responseData) {
+        const productColors = document.querySelector(".product-colors");
         const productSizes = document.querySelector(".product-sizes");
-        productSizes.innerHTML = ``;
+        productSizes.innerHTML = "";
         Object.entries(responseData.pdtColors).forEach(entry => {
-            if(productColors.valus == entry[0]){
-                entry[1].forEach(valus => {
-                    productSizes.innerHTML +=`
-                        <input type="hidden" id="pdtDtlId" value="${valus.pdtId}">
-                        <input type="radio" id="product-size-${valus.sizeName}" class="product-size" name="pdtSize" value="${valus.sizeId}"${valus.pdtStock == 0 ? 'class="no-stock"' : ''}>
-                        <label for="product-size-${valus.sizeName}" ${valus.pdtStock == 0 ? 'class="no-stock"' : ''}>${valus.sizeName}</label>
+            if(productColors.value == entry[0]) {
+                entry[1].forEach(value => {
+                    productSizes.innerHTML += `
+                        <input type="hidden" id="pdtDtlId" value="${value.pdtDtlId}">
+                        <input type="radio" id="product-size-${value.sizeName}" class="product-size" name="pdtSize" value="${value.sizeId}" ${value.pdtStock == 0 ? 'disabled' : ''}>
+                        <label for="product-size-${value.sizeName}" ${value.pdtStock == 0 ? 'class="no-stock"' : ''}>${value.sizeName}</label>
                     `;
-
                 })
-
+                
             }
-        })
+        });
         this.addColorsSelectEvent(responseData)
     }
 
