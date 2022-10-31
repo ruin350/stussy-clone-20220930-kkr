@@ -11,6 +11,17 @@
     width: 55%;
 }
 
+.product-image {
+    margin-bottom: 20px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.product-image img {
+    width: 100%;
+}
+
+
 .offers {
     position: sticky;
     top: 25%;
@@ -56,9 +67,46 @@
     display: none;
 }
 
-.product-sizes
+.no-stock {
+    color: rgb(198, 198, 198);
+    text-decoration: line-through;
+}
 
+.product-size:checked + .product-sizes label {
+    border: 1px solid black;
+}
 
+.bag-button{
+    margin-bottom: 10px;
+    padding: 15px 0;
+
+    width: 100%;
+
+    font-weight: 700;
+    color: white;
+    background-color: black;
+}
+
+.checkout-button{
+    margin-bottom: 10px;
+    padding: 15px 0;
+
+    width: 100%;
+
+    font-weight: 700;
+}
+
+.product-info {
+    margin: 40px 0 20px;
+}
+
+.info {
+    margin-bottom: 5px;
+}
+
+.detail-info {
+    margin-bottom: 10px;
+}
 
 
 
