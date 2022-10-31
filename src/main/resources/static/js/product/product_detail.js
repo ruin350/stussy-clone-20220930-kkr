@@ -35,9 +35,10 @@ class ProductDetail{
         this.loadProductDetail(responseData);
         this.loadProductImgs(responseData);
         this.loadProductColors(responseData);
+        this.loadProductSizes(responseData);
     }
 
-    // img
+    // img 출력
     loadProductImgs(responseData){
         const productImages = document.querySelector(".product-images")
         productImages.innerHTML = ``;
@@ -51,7 +52,7 @@ class ProductDetail{
         })
     }
 
-    // detail
+    // detail 출력
     loadProductDetail(responseData){
         document.querySelector(".product-title").textContent = responseData.pdtName;
         document.querySelector(".product-price").textContent = "\\" + responseData.pdtPrice;
@@ -64,14 +65,43 @@ ${responseData.pdtDetailInfo}`;
         
     }
 
-    // color
+    // color 출력
     loadProductColors(responseData){
         const productColors = document.querySelector(".product-colors");
         productColors.innerHTML = ``;
-
+        
         Object.keys(responseData.pdtColors).forEach(color =>{
             productColors.innerHTML += `<option value="${color}">${color}</option>`;
         })
+    }
+
+    // size선택시
+    loadProductSizes(responseData){
+        const productColors = document.querySelector(".product-colors");    
+        const productSizes = document.querySelector(".product-sizes");
+        productSizes.innerHTML = ``;
+        Object.entries(responseData.pdtColors).forEach(entry => {
+            if(productColors.valus == entry[0]){
+                entry[1].forEach(valus => {
+                    productSizes.innerHTML +=`
+                        <input type="hidden" id="pdtDtlId" value="${valus.pdtId}">
+                        <input type="radio" id="product-size-${valus.sizeName}" class="product-size" name="pdtSize" value="${valus.sizeId}"${valus.pdtStock == 0 ? 'class="no-stock"' : ''}>
+                        <label for="product-size-${valus.sizeName}" ${valus.pdtStock == 0 ? 'class="no-stock"' : ''}>${valus.sizeName}</label>
+                    `;
+
+                })
+
+            }
+        })
+        this.addColorsSelectEvent(responseData)
+    }
+
+    //
+    addColorsSelectEvent(responseData){
+        const productColors = document.querySelector(".product-colors");
+        productColors.onchange = () =>{
+            this.loadProductSizes(responseData);
+        }
     }
 }
 
