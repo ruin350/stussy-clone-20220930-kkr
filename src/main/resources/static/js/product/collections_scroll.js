@@ -128,19 +128,20 @@ class CollectionsService {
         });
         this.addProductListEvent();
     }
-    addProductListEvent(){
+    addProductListEvent() {
         const collectionProducts = document.querySelectorAll(".collection-product");
 
-        collectionProducts.forEach((product,index)=>{
-            product.onclick = () =>{
+        collectionProducts.forEach((product, index) => {
+            product.onclick = () => {
                 location.href = "/product/" + this.pdtIdList[index];
             }
-        })
+        });
+
     }
+
 }
 
 window.onload = () => {
     CollectionsService.getInstance().loadCollections();
     PageScroll.getInstance().addScrollPagingEvent();
-    
 }
