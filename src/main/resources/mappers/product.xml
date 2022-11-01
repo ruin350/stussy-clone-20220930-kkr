@@ -85,7 +85,7 @@
 
     </select>
 
-    <select id="getCheckoutProduct">
+    <select id="getPaymentProduct" resultType="com.stussy.stussyclone20220930kkr.domain.PaymentProduct">
         SELECT
             pd.id AS pdt_dtl_id,
             pd.pdt_id,

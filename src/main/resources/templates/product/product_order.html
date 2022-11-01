@@ -31,7 +31,7 @@
                         <img src="/static/images/header/profile.png">
                     </div>
                     <div class="profile-detail">
-                        <div class="principal-user"th:text="|${user.name} (${user.email})|">구기룡 (kkr583@naver.com)</div>
+                        <div class="principal-user" th:text="|${user.name} (${user.email})|"></div>
                         <a href="/logout">로그아웃</a>
                     </div>
                 </div>
@@ -70,11 +70,11 @@
             <li class="product-list">
                 <div class="product-info">
                     <div class="product-img">
-                        <img th:src="|/static/upload/product/$data.saveName}|">
+                        <img th:src="|/static/upload/product/${data.saveName}|">
                     </div>
                     <div class="product-description">
-                        <h2 th:text="|${data.pdtName}|"></h2>
-                        <span th:text="|${data.pdtColor} / ${data.pdt.sizeName}|"></span>
+                        <h2 th:text="${data.pdtName}"></h2>
+                        <span th:text="|${data.pdtColor} / ${data.sizeName}|"></span>
                     </div>
                 </div>
                 <div class="product-price" th:text="|\${data.pdtPrice}|"></div>
