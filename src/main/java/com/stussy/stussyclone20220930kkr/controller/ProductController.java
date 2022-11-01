@@ -18,7 +18,7 @@ public class ProductController {
         return "product/product_detail";
     }
 
-    @GetMapping("/checkout/{pdtDtlId}")
+    @GetMapping("/checkout")
     public String loadPayment(@RequestParam int pdtDtlId) {
         System.out.println(pdtDtlId);
         return "product/product_order";

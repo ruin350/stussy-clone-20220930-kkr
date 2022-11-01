@@ -44,7 +44,7 @@ class PageScroll {
         }
         return this.#instance;
     }
-
+     
     addScrollPagingEvent() {
         const html = document.querySelector("html");
         const body = document.querySelector("body");
@@ -75,7 +75,7 @@ class CollectionsService {
         }
         return this.#instance;
     }
-    
+
     pdtIdList = null;
 
     collectionsEntity = {
@@ -84,11 +84,10 @@ class CollectionsService {
         maxPage: 0
     }
 
-    constructor(){
+    constructor() {
         this.pdtIdList = new Array();
     }
-
-
+   
 
     loadCollections() {
         if(this.collectionsEntity.page == 1 || this.collectionsEntity.page < Number(this.collectionsEntity.maxPage) + 1) {
@@ -126,8 +125,10 @@ class CollectionsService {
             </li>
             `;
         });
+
         this.addProductListEvent();
     }
+
     addProductListEvent() {
         const collectionProducts = document.querySelectorAll(".collection-product");
 

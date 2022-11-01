@@ -72,7 +72,7 @@
     text-decoration: line-through;
 }
 
-.product-size:checked + .product-sizes label {
+.product-size:checked + label {
     border: 1px solid black;
 }
 

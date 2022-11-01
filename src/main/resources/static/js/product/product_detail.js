@@ -95,9 +95,9 @@ ${responseData.pdtDetailInfo}`;
     }
 
     //
-    addColorsSelectEvent(responseData){
+    addColorsSelectEvent(responseData) {
         const productColors = document.querySelector(".product-colors");
-        productColors.onchange = () =>{
+        productColors.onchange = () => {
             this.loadProductSizes(responseData);
         }
     }
