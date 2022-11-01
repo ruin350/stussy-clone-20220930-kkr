@@ -52,7 +52,6 @@ main{
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    margin-left: 11px;
     border-radius: 50%;
 
     width: 50px; height: 50px;
@@ -63,6 +62,10 @@ main{
 
 .profile-img img{
     width: 80%;
+}
+
+.profile-detail{
+    margin-left: 11px;
 }
 
 .address-info{
@@ -154,10 +157,10 @@ aside{
 
 .order-info{
     border-top: 1px solid rgb(198, 198, 198);
-    padding: 16px 0; 
+    padding: 16px;
 }
 
-.order-price, .order-shipping, .order-total{
+.order-price, .order-shpping, .order-total{
     display: flex;
     justify-content: space-between;
     align-items: center;
