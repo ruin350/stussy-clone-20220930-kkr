@@ -1,3 +1,7 @@
+h2, h3{
+    margin: 0;
+}
+
 #container{
     display: flex;
     justify-content: center;
@@ -34,11 +38,6 @@ main{
     width: 42px;
 }
 
-aside{
-    margin: 0; padding: 44px 0 0 35px;
-    width: 362px;
-}
-
 .info-title{
     font-size: 16px; 
     font-weight: 400;
@@ -47,4 +46,131 @@ aside{
 .info-detail{
     display: flex;
     align-items: center;
+}
+
+.profile-img{
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    margin-left: 11px;
+    border-radius: 50%;
+
+    width: 50px; height: 50px;
+
+    background-color: royalblue;
+    overflow: hidden;
+}
+
+.profile-img img{
+    width: 80%;
+}
+
+.address-info{
+    padding-top: 33px;
+}
+
+select, input{
+    margin: 5px 0;
+}
+
+.address-items{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.address-zonecode, .address-button, .address-sido, .address-sigungu{
+    width: 49%;
+}
+
+.address-button{
+    padding: 0;
+    height: 34px;
+
+    background-color: black;
+    color: white;
+}
+
+.payment-content{
+    padding: 20px 0;
+}
+
+.payment-button{
+    width: 100%;
+    background-color: black;
+    color: white;
+
+}
+
+.main-footer{
+    margin-top: 150px;
+    border-top: 2px solid rgb(227, 227, 227);
+    padding-top: 10px;
+}
+
+.main-footer a{
+    margin-right: 10px;
+}
+
+aside{
+    margin: 0; padding: 44px 0 0 35px;
+    width: 362px;
+}
+
+.product-list{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    margin: 8px 0 16px;
+}
+
+.product-info{
+    display: flex;
+    align-items: center;
+}
+
+.product-img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-right: 11px;
+    border: 1px solid rgb(228, 228, 228);
+    border-radius: 7px;
+
+    width: 50px; height: 50px;
+    overflow: hidden;
+}
+
+.product-img img{
+    width: 90%;
+}
+
+.product-description span{
+    font-size: 10px;
+    color: rgb(75, 75, 75);
+}
+
+.order-info{
+    border-top: 1px solid rgb(198, 198, 198);
+    padding: 16px 0; 
+}
+
+.order-price, .order-shipping, .order-total{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.order-info h3{
+    padding: 2px;
+}
+
+.order-total h2{
+    font-size: 13px;
+}
+
+.order-total strong{
+    font-size: 18px;
 }

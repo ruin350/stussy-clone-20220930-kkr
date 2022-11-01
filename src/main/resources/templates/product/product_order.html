@@ -37,15 +37,59 @@
             </div>
             <div class="address-info">
                 <h2 class="info-title">배송 주소</h2>
-                
+                <select >
+                    <option value="ko">대한민국</option>
+                </select>
+                <input type="text" class="principal-name" placeholder="성명">
+                <div class="address-items">
+                    <input type="text" class="address-zonecode" placeholder="우편번호" disabled>
+                    <button type="button" class="btn address-button">주소찾기</button>
+                </div>
+                <div class="address-items">
+                    <input type="text" class="address-sido" placeholder="시/도" disabled>
+                    <input type="text" class="address-sigungu" placeholder="시/군/구" disabled>
+                </div>
+                <input type="text" class="address-all" placeholder="주소" disabled>
+                <input type="text" class="address-detail" placeholder="아파트, 동/호수 등">
+                <input type="text" class="phone-number" placeholder="전화번호">
             </div>
             <div class="payment-content">
-
+                <button type="button" class="btn payment-button">결제하기</button>
             </div>
         </section>
+        <footer class="main-footer">
+            <a href="#">환불 정책</a>
+            <a href="#">배송 정책</a>
+            <a href="#">개인정보처리방침</a>
+            <a href="#">서비스 약관</a>
+        </footer>
     </main>
     <aside>
-
+        <ul class="order-summary">
+            <li class="product-list">
+                <div class="product-info">
+                    <div class="product-img">
+                        <img src="/static/images/product/noimage3.png">
+                    </div>
+                    <div class="product-description">
+                        <h2>상품명</h2>
+                        <span>Black / S</span>
+                    </div>
+                </div>
+                <div class="product-price">\100000</div>
+            </li>
+        </ul>
+        <div class="order-info">
+            <div class="order-price">
+                <h3>총 상품금액</h3><span>\100000</span>
+            </div>
+            <div class="order-shipping">
+                <h3>배송비</h3><span>무료배송</span>
+            </div>
+        </div>
+        <div class="order-total">
+            <h2>총 결제금액</h2><strong>\100000</strong>
+        </div>
     </aside>
 </div>
 <script src="/static/js/product/product_order.js"></script>
