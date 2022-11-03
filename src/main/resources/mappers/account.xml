@@ -23,6 +23,16 @@
         <result property="update_date" column="update_date"/>
         <collection property="role" resultMap="role"/>
     </resultMap>
+    <update id="updateProvider" parameterType="com.stussy.stussyclone20220930kkr.domain.User">
+        update
+            user_mst
+        set
+            provider = #{provider}
+            update_date = now()
+        where
+            id = #{id}
+
+    </update>
 
 
     <select id="findUserByEmail" parameterType="String" resultMap="user">
