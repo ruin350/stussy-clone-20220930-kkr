@@ -72,7 +72,7 @@ public class PrincipalOauth2Service extends DefaultOAuth2UserService {
             user.setProvider(provider);
             accountRepository.updateProvider(user);
 
-        } else if (user.getProvider().contains(provider)) {
+        } else if (!user.getProvider().contains(provider)) {
             user.setProvider(user.getProvider() + "," + provider);
             accountRepository.updateProvider(user);
         }

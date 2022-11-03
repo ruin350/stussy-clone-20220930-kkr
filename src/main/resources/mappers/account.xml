@@ -27,7 +27,7 @@
         update
             user_mst
         set
-            provider = #{provider}
+            provider = #{provider},
             update_date = now()
         where
             id = #{id}
