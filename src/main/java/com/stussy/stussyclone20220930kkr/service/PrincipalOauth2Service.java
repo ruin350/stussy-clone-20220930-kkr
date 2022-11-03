@@ -1,6 +1,9 @@
 package com.stussy.stussyclone20220930kkr.service;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4e6bc79d684c059089de6119f2c1b854061b8f94
 import com.stussy.stussyclone20220930kkr.domain.User;
 import com.stussy.stussyclone20220930kkr.repository.AccountRepository;
 import com.stussy.stussyclone20220930kkr.security.PrincipalDetails;
@@ -9,7 +12,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
+<<<<<<< HEAD
 import org.springframework.security.oauth2.core.OAuth2AuthenticatedPrincipal;
+=======
+>>>>>>> 4e6bc79d684c059089de6119f2c1b854061b8f94
 import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
@@ -21,6 +27,10 @@ import java.util.UUID;
 @Service
 @RequiredArgsConstructor
 public class PrincipalOauth2Service extends DefaultOAuth2UserService {
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4e6bc79d684c059089de6119f2c1b854061b8f94
     private final AccountRepository accountRepository;
 
     @Override
@@ -62,7 +72,11 @@ public class PrincipalOauth2Service extends DefaultOAuth2UserService {
             user = User.builder()
                     .email(email)
                     .password(new BCryptPasswordEncoder().encode(UUID.randomUUID().toString()))
+<<<<<<< HEAD
                     .name((String) attributes.get("name"))
+=======
+                    .name((String) oauth2Attributes.get("name"))
+>>>>>>> 4e6bc79d684c059089de6119f2c1b854061b8f94
                     .provider(provider)
                     .role_id(1)
                     .build();
@@ -70,11 +84,22 @@ public class PrincipalOauth2Service extends DefaultOAuth2UserService {
             accountRepository.saveUser(user);
         } else if(user.getProvider() == null) {
             // 연동
+<<<<<<< HEAD
 
         }
 
         System.out.println(user);
 
         return new PrincipalDetails(user, attributes);
+=======
+            user.setProvider(provider);
+            accountRepository.updateProvider(user);
+
+        } else if (!user.getProvider().contains(provider)) {
+            user.setProvider(user.getProvider() + "," + provider);
+            accountRepository.updateProvider(user);
+        }
+        return new PrincipalDetails(user, oauth2Attributes);
+>>>>>>> 4e6bc79d684c059089de6119f2c1b854061b8f94
     }
 }

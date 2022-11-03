@@ -11,7 +11,11 @@ import java.util.Collection;
 import java.util.Map;
 
 @Data
+<<<<<<< HEAD
 public class PrincipalDetails implements UserDetails, OAuth2User {
+=======
+public class PrincipalDetails implements UserDetails,OAuth2User {
+>>>>>>> 4e6bc79d684c059089de6119f2c1b854061b8f94
 
     private User user;
     private Map<String, Object> attributes;
@@ -71,4 +75,8 @@ public class PrincipalDetails implements UserDetails, OAuth2User {
     public Map<String, Object> getAttribute(String name) {
         return attributes;
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 4e6bc79d684c059089de6119f2c1b854061b8f94
