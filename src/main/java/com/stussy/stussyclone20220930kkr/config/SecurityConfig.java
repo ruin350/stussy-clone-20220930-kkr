@@ -16,10 +16,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final PrincipalOauth2Service principalOauth2Service;
-<<<<<<< HEAD
-=======
 
->>>>>>> 4e6bc79d684c059089de6119f2c1b854061b8f94
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
